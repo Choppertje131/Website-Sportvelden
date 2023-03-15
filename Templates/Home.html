@@ -26,7 +26,7 @@
                 <button {% if lamp004_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 4 {{ light.Lamp4 }}</button>
                 <button {% if lamp005_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">Lamp 5 {{ light.Lamp5 }}</button>
                 <button {% if lamp006_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 6 {{ light.Lamp6 }}</button>
-                {% csrf_token %}
+                {% csrf_token %}
             </form>
         </div>
     </main> 

@@ -50,7 +50,7 @@ class Settings_lightnames(models.Model):
     Lamp20 = models.CharField(max_length=10)
 
     def _str_(self):
-        return self.lights_fields
+        return self.Settings_lightnames
 
     class Meta:
         verbose_name_plural = "Lights fields"
