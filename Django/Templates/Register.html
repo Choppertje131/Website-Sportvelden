@@ -1,0 +1,43 @@
+{% comment %} Inlogpagina 
+===================================================================================================================================================================================
+Bedrijf:        Strago Electro
+Opdrachtgever:  
+Versie:         0.1
+===================================================================================================================================================================================
+Versie          Programeur          Omschrijving          Datum           Status
+0.1             Twan van Zuijdam    Eerste Opzet          06-03-2023      Concept
+=================================================================================================================================================================================== {% endcomment %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="icon" href="{% static 'IMG/strago-electro-favicon.png' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'CSS/Register.css' %}" />
+    </head>
+    <body>
+        <form class="login-form" method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="login-form__logo-container">
+                <a href="https://www.strago.nl">
+                    <img class="login-form__logo" src="{% static 'IMG/Strago-Logo.png' %}" alt="Logo">
+                </a>   
+            </div>
+            <div class="login-form__content">
+                <div class="login-form__header">Register your account</div>
+                <input class="login-form__input" type="text" name="username" placeholder="Username" required>
+                <input class="login-form__input" type="password" name="password" placeholder="Password" required>
+                <input class="login-form__input" type="password" name="confirmPassword" placeholder="Confirm password" required>
+                <button class="login-form__button" type="submit">Register</button>
+                <p class="error" style="color: red; text-align: center;">{{ error }}</p>
+                <div class="login-form__links">
+                    <a class="login-form__link" href="login">Heb je al een accout? Klik hier om in te loggen.</a>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

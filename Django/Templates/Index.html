@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="{% static 'IMG/strago-electro-favicon.png' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'CSS/Format.css' %}"/>
+    </head>
+    <header>
+        <div class="pc-header">
+            <div class="logo-case">
+                <a href="https://www.strago.nl">
+                    <img class="logo" src="{% static 'IMG/Strago-Logo.png' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="inhoud">
+                <div class="bar"></div>
+                <div class="navlist">
+                    <a href="/" class="Home">Home</a>
+                    <a href="/veld1" placeholder="Nav-Veld1" class="Veld1">{{ field.Veld1 }}</a>
+                    <a href="/veld2" placeholder="Nav-Veld2" class="Veld2">{{ field.Veld2 }}</a>
+                    <a href="/veld3" placeholder="Nav-Veld3" class="Veld3">{{ field.Veld3 }}</a>
+                    <a href="/veld4" placeholder="Nav-Veld4" class="Veld4">{{ field.Veld4 }}</a>
+                    <a href="/settings" class="Settings">Settings</a>
+                    <a href="/logout" class="Logout">Log-out</a>
+                </div>
+                <div class="logo-case-2">
+                        <img class="login-form__logo" src="{% static 'IMG/Vereniging.png' %}" alt="Logo">
+                </div>
+            </div>
+            <div class="clock">
+                <span class="clock-time">13:09:05</span>
+            </div>
+        </div>
+        <div class="mobile-header">
+            <div class="logo-case">
+                <a href="https://www.strago.nl">
+                    <img class="logo" src="{% static 'IMG/Strago-Logo.png' %}" alt="Logo">
+                </a>
+            </div>
+            <div class="inhoud">
+                <div class="burger" onclick="activBtn()">
+                    <div id="burg1" class="burger-line1"></div>
+                    <div id="burg2" class="burger-line2"></div>
+                    <div id="burg3" class="burger-line3"></div>
+                </div>
+                <div id="navList" class="navlist">  
+                    <a href="/" class="Home">Home</a>
+                    <a href="/veld1" placeholder="Nav-Veld1" class="Veld1">{{ field.Veld1 }}</a>
+                    <a href="/veld2" placeholder="Nav-Veld2" class="Veld2">{{ field.Veld2 }}</a>
+                    <a href="/veld3" placeholder="Nav-Veld3" class="Veld3">{{ field.Veld3 }}</a>
+                    <a href="/veld4" placeholder="Nav-Veld4" class="Veld4">{{ field.Veld4 }}</a>
+                    <a href="/settings" class="Settings">Settings</a>
+                    <a href="/logout" class="Logout">Log-out</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <body>
+        <script src="{% static 'JS/Time.js' %}"></script>
+        <script src="{% static 'JS/navbar.js' %}"></script>
+        {% include page %}   
+    </body>
+</html>

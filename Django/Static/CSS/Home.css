@@ -1,0 +1,97 @@
+/* Home 
+===================================================================================================================================================================================
+Bedrijf:        Strago Electro
+Opdrachtgever:  
+Versie:         0.2
+===================================================================================================================================================================================
+Versie          Programeur          Omschrijving                    Datum           Status
+0.1             Twan van Zuijdam    Eerste Opzet                    06-03-2023      Concept
+0.2             Twan van Zuijdam    Mobile/Tablet version added     10-03-2023      Concept
+===================================================================================================================================================================================
+*/
+
+/* Laptop Screen */
+@media(min-width: 900px) {
+    .Veld1,
+    .Veld2,
+    .Veld3,
+    .Veld4,
+    .Settings,
+    .Logout {
+        text-decoration: none;
+    }
+
+       
+    .field {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 38%;
+    }
+
+    .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 190.5px;
+        row-gap: 282px;
+        position: absolute;
+        align-items: center;
+        top: 290px;
+        justify-content: space-evenly;
+    }
+ 
+    /* .lamp-format {
+        font-size: 10px; 
+        height: 30px; 
+        width: 80px;
+    } */
+
+    .lamp-format.lamp-aan-format {
+        color: gold;
+    }
+
+    .lamp-format.lamp-uit-format {
+        color: black;
+    }
+}
+
+/* Tablet screen */
+@media (max-width: 900px) {
+    .Veld1,
+    .Veld2,
+    .Veld3,
+    .Veld4,
+    .Settings,
+    .Logout {
+        text-decoration: none;
+    }
+
+    .field {
+        display: block;
+        margin-left: auto;
+        margin-right: 345px;
+        width: 38%;
+    }
+
+    .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 190.5px;
+        row-gap: 282px;
+        position: absolute;
+        align-items: center;
+        top: 280px;
+        justify-content: space-evenly;
+    }
+
+    .lamp-format.lamp-aan-format {
+        color: gold;
+    }
+
+    .lamp-format.lamp-uit-format {
+        color: black;
+    }
+    
+}

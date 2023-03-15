@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/dcbb15e7da.js" crossorigin="anonymous"></script>
+    <title>Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'CSS/Settings.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/Formatinside.css' %}" />
+</head>
+<body>
+    <form class="text-form" method="post">
+        <h2>
+            Navigatie balk
+        </h2>
+        <input autocomplete="off" type="text" name="Box1" placeholder="Navigatie 1" maxlength="9">
+        <input autocomplete="off" type="text" name="Box2" placeholder="Navigatie 2" maxlength="9">
+        <input autocomplete="off" type="text" name="Box3" placeholder="Navigatie 3" maxlength="9">
+        <input autocomplete="off" type="text" name="Box4" placeholder="Navigatie 4" maxlength="9">
+        <button type="submit" name="submit">Opslaan</button>
+        {% csrf_token %}
+    </form>
+    <form class="text-form" method="post">
+        <h2>
+            Naam Lampen
+        </h2>
+        <input autocomplete="off" type="text" name="Box5" placeholder="Lamp 1" maxlength="15">
+        <input autocomplete="off" type="text" name="Box6" placeholder="Lamp 2" maxlength="15">
+        <input autocomplete="off" type="text" name="Box7" placeholder="Lamp 3" maxlength="15">
+        <input autocomplete="off" type="text" name="Box8" placeholder="Lamp 4" maxlength="15">
+        <input autocomplete="off" type="text" name="Box9" placeholder="Lamp 5" maxlength="15">
+        <input autocomplete="off" type="text" name="Box10" placeholder="Lamp 6" maxlength="15">
+        <button type="submit" name="submit">Opslaan</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

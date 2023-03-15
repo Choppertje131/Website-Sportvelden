@@ -1,0 +1,134 @@
+/* Veld3
+===================================================================================================================================================================================
+Bedrijf:        Strago Electro
+Opdrachtgever:  
+Versie:         0.1
+===================================================================================================================================================================================
+Versie          Programeur          Omschrijving          Datum           Status
+0.1             Twan van Zuijdam    Eerste Opzet          06-03-2023      Concept
+0.2             Twan van Zuijdam    Added Fields          10-03-2023      Concept
+===================================================================================================================================================================================
+*/
+
+/* Laptop version */
+@media(min-width: 900px) {
+    .Settings,
+    .Veld2,
+    .Veld1,
+    .Veld4,
+    .Home,
+    .Logout {
+        text-decoration: none;
+    }
+
+    .controls-game {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 190.5px;
+        row-gap: 240px;
+        position: absolute;
+        align-items: center;
+        top: 310px;
+        justify-content: space-evenly;
+    }
+    
+    .field-game {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 38%;
+    }
+
+    .controls-practice {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 190.5px;
+        row-gap: 240px;
+        position: absolute;
+        align-items: center;
+        margin-top: -317px;
+        justify-content: space-evenly;
+    }
+    
+    .field-practice {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        width: 38%;
+    }
+
+    /* .lamp-format {
+        font-size: 10px; 
+        height: 30px; 
+        width: 80px;
+    } */
+
+    .lamp-format.lamp-aan-format {
+        color: gold;
+    }
+
+    .lamp-format.lamp-uit-format {
+        color: black;
+    }
+}
+
+/* Tablet version */
+@media(max-width: 900px) {
+    .Settings,
+    .Veld2,
+    .Veld1,
+    .Veld4,
+    .Home,
+    .Logout {
+        text-decoration: none;
+    }
+
+    .field-game {
+        display: block;
+        margin-left: auto;
+        margin-right: 345px;
+        width: 38%;
+    }
+
+    .controls-game {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 190.5px;
+        row-gap: 240px;
+        position: absolute;
+        align-items: center;
+        top: 300px;
+        justify-content: space-evenly;
+    }
+
+    .field-practice {
+        display: block;
+        margin-left: auto;
+        margin-right: 345px;
+        width: 38%;
+    }
+
+    .controls-practice {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 190.5px;
+        row-gap: 240px;
+        position: absolute;
+        align-items: center;
+        margin-top: -317px;
+        justify-content: space-evenly;
+    }
+
+    .lamp-format.lamp-aan-format {
+        color: gold;
+    }
+
+    .lamp-format.lamp-uit-format {
+        color: black;
+    }
+}
