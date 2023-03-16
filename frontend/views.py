@@ -202,25 +202,25 @@ def settingssview(request):
     return render(request, 'index.html', data)
 
 # Naam lampen veranderen
-# def settingssview(request):
-#     if request.method == "POST":
-#         boxes = {'Box5': 'Lamp1', 'Box6': 'Lamp2', 'Box7': 'Lamp3', 'Box8': 'Lamp4'}
-#         table = Settings_lightnames()
+def settingssview(request):
+    if request.method == "POST":
+        boxes = {'Box5': 'Lamp1', 'Box6': 'Lamp2', 'Box7': 'Lamp3', 'Box8': 'Lamp4'}
+        table = Settings_lightnames()
 
-#         for box, light in boxes.items():
-#             requested_box = request.POST.get(box)
-#             if requested_box != "" and len(requested_box) > 1:
-#                 setattr(table, light, requested_box)
-#             else:
-#                 setattr(table, light, Settings_lightnames.objects.values(light).last()[light])
+        for box, light in boxes.items():
+            requested_box = request.POST.get(box)
+            if requested_box is not None and requested_box != "" and len(requested_box) > 1:
+                setattr(table, light, requested_box)
+            else:
+                setattr(table, light, Settings_lightnames.objects.values(light).last()[light])
 
-#         table.save()
+        table.save()
     
-#     data = {
-#                 'page': 'Settingss.html',
-#                 'error': '',
-#                 'field': Settings_lightnames.objects.last(),
-#             }   
-#     return render(request, 'index.html', data)
+    data = {
+        'page': 'Settingss.html',
+        'error': '',
+        'field': Settings_lightnames.objects.last(),
+    }   
+    return render(request, 'index.html', data)
 
-    #  
+     
