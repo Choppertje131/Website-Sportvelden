@@ -20,12 +20,12 @@
                 <img src="{% static 'IMG/Hockeyfield.png' %}" alt="">
             </div>
             <form class="controls-game" method="post">
-                <button {% if lamp001_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp1">Lamp 1</button>
-                <button {% if lamp002_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp2">Lamp 2</button>
-                <button {% if lamp003_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">Lamp 3</button>
-                <button {% if lamp004_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 4</button>
-                <button {% if lamp005_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">Lamp 5</button>
-                <button {% if lamp006_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 6</button>
+                <button {% if lamp001_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp1">{{ lamp1 }}</button>
+                <button {% if lamp002_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp2">{{ lamp2 }}</button>
+                <button {% if lamp003_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">{{ lamp3 }}</button>
+                <button {% if lamp004_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">{{ lamp4 }}</button>
+                <button {% if lamp005_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">{{ lamp5 }}</button>
+                <button {% if lamp006_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">{{ lamp6 }}</button>
                 {% csrf_token %}
             </form>
         </div>
@@ -37,12 +37,12 @@
                 <img src="{% static 'IMG/Hockeyfield-Practice.png' %}" alt="">
             </div>
             <form class="controls-practice" method="post">
-                <button {% if lamp001_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp1">Lamp 1</button>
-                <button {% if lamp002_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp2">Lamp 2</button>
-                <button {% if lamp003_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">Lamp 3</button>
-                <button {% if lamp004_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 4</button>
-                <button {% if lamp005_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">Lamp 5</button>
-                <button {% if lamp006_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 6</button>
+                <button {% if lamp001_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp1">{{ lamp1 }}</button>
+                <button {% if lamp002_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp2">{{ lamp2 }}</button>
+                <button {% if lamp003_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">{{ lamp3 }}</button>
+                <button {% if lamp004_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">{{ lamp4 }}</button>
+                <button {% if lamp005_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">{{ lamp5 }}</button>
+                <button {% if lamp006_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">{{ lamp6 }}</button>
                 {% csrf_token %}
             </form>
         </div>

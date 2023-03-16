@@ -23,9 +23,9 @@ Versie          Programeur          Omschrijving          Datum           Status
 
     .controls-game {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 80px 60px 85px;
         grid-template-rows: 1fr 1fr;
-        column-gap: 190.5px;
+        column-gap: 151.5px;
         row-gap: 240px;
         position: absolute;
         align-items: center;
@@ -37,14 +37,14 @@ Versie          Programeur          Omschrijving          Datum           Status
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 38%;
+        width: 39%;
     }
 
     .controls-practice {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 80px 60px 85px;
         grid-template-rows: 1fr 1fr;
-        column-gap: 190.5px;
+        column-gap: 151.5px;
         row-gap: 240px;
         position: absolute;
         align-items: center;
@@ -95,9 +95,9 @@ Versie          Programeur          Omschrijving          Datum           Status
 
     .controls-game {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 80px 60px 85px;
         grid-template-rows: 1fr 1fr;
-        column-gap: 190.5px;
+        column-gap: 151px;
         row-gap: 240px;
         position: absolute;
         align-items: center;
@@ -114,9 +114,9 @@ Versie          Programeur          Omschrijving          Datum           Status
 
     .controls-practice {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 80px 60px 85px;
         grid-template-rows: 1fr 1fr;
-        column-gap: 190.5px;
+        column-gap: 149.5px;
         row-gap: 240px;
         position: absolute;
         align-items: center;

@@ -34,7 +34,7 @@ class Settings_lightnames(models.Model):
     Lamp4 = models.CharField(max_length=10)
     Lamp5 = models.CharField(max_length=10)
     Lamp6 = models.CharField(max_length=10)
-    field_id = models.CharField(max_length=5)
+    field_id = models.CharField(max_length=50)
 
     def __str__(self):
         return self.field_id

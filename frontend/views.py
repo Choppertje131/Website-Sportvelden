@@ -215,16 +215,6 @@ def veld4view(request):
 
     return render(request, 'Index.html', data)
 
-# def settingssview(request):
-#     if not request.user.is_authenticated:
-#         return redirect('/login')
-#     data = {
-#             'page': 'Settingss.html',
-#             'error': '',
-#             'field': Settings_fieldnames.objects.last(),
-#         }   
-#     return render(request, 'Index.html', data)
-
 # def homeview(request):
 #     Lamp001_bool = False
 
@@ -247,11 +237,6 @@ def settingsview(request):
             'field': Settings_fieldnames.objects.last(),
         }   
     return render(request, 'Index.html', data)
-
-# def settingsview(request):
-#     if request.user.is_authenticated:
-#         if request.user.has_perm('Admin','Admin'):
-#             return redirect('/settings')
 
 # naam navigatiebalk veranderen
 def settingssview(request):
