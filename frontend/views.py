@@ -6,7 +6,7 @@ from django.contrib.auth.models import Permission
 from .models import Settings_fieldnames
 from .models import Settings_lightnames
 field_names = Settings_fieldnames
-light_names = Settings_lightnames
+light_names = Settings_lightnames.objects.all()
 
 
 def loginview(request): 
@@ -91,10 +91,28 @@ def homeview(request):
 def veld1view(request):
     if not request.user.is_authenticated:
         return redirect('/login')
+
+    reversed_list = list(reversed(list(light_names.values())))
+    for item in reversed_list:
+        if item["field_id"] == "VID-A":
+            lamp1 = item["Lamp1"]
+            lamp2 = item["Lamp2"]
+            lamp3 = item["Lamp3"]
+            lamp4 = item["Lamp4"]
+            lamp5 = item["Lamp5"]
+            lamp6 = item["Lamp6"]
+            break
+
     data = {
             'page': 'veld1.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
+            'lamp1': lamp1,
+            'lamp2': lamp2,
+            'lamp3': lamp3,
+            'lamp4': lamp4,
+            'lamp5': lamp5,
+            'lamp6': lamp6,
         }
 
     return render(request, 'Index.html', data )
@@ -141,15 +159,15 @@ def veld4view(request):
         }   
     return render(request, 'Index.html', data)
 
-def settingssview(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
-    data = {
-            'page': 'Settingss.html',
-            'error': '',
-            'field': Settings_fieldnames.objects.last(),
-        }   
-    return render(request, 'Index.html', data)
+# def settingssview(request):
+#     if not request.user.is_authenticated:
+#         return redirect('/login')
+#     data = {
+#             'page': 'Settingss.html',
+#             'error': '',
+#             'field': Settings_fieldnames.objects.last(),
+#         }   
+#     return render(request, 'Index.html', data)
 
 # def homeview(request):
 #     Lamp001_bool = False
@@ -202,25 +220,25 @@ def settingssview(request):
     return render(request, 'index.html', data)
 
 # Naam lampen veranderen
-def settingssview(request):
-    if request.method == "POST":
-        boxes = {'Box5': 'Lamp1', 'Box6': 'Lamp2', 'Box7': 'Lamp3', 'Box8': 'Lamp4'}
-        table = Settings_lightnames()
+# def settingssview(request):
+#     if request.method == "POST":
+#         boxes = {'Box5': 'Lamp1', 'Box6': 'Lamp2', 'Box7': 'Lamp3', 'Box8': 'Lamp4'}
+#         table = Settings_lightnames()
 
-        for box, light in boxes.items():
-            requested_box = request.POST.get(box)
-            if requested_box is not None and requested_box != "" and len(requested_box) > 1:
-                setattr(table, light, requested_box)
-            else:
-                setattr(table, light, Settings_lightnames.objects.values(light).last()[light])
+#         for box, light in boxes.items():
+#             requested_box = request.POST.get(box)
+#             if requested_box is not None and requested_box != "" and len(requested_box) > 1:
+#                 setattr(table, light, requested_box)
+#             else:
+#                 setattr(table, light, Settings_lightnames.objects.values(light).last()[light])
 
-        table.save()
+#         table.save()
     
-    data = {
-        'page': 'Settingss.html',
-        'error': '',
-        'field': Settings_lightnames.objects.last(),
-    }   
-    return render(request, 'index.html', data)
+#     data = {
+#         'page': 'Settingss.html',
+#         'error': '',
+#         'field': Settings_lightnames.objects.last(),
+#     }   
+#     return render(request, 'index.html', data)
 
      
