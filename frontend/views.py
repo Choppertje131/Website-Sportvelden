@@ -133,7 +133,7 @@ def veld2view(request):
             break
 
     data = {
-            'page': 'veld1.html',
+            'page': 'veld2.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
             'lamp1': lamp1,
@@ -173,7 +173,7 @@ def veld3view(request):
             break
 
     data = {
-            'page': 'veld1.html',
+            'page': 'veld3.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
             'lamp1': lamp1,
@@ -202,7 +202,7 @@ def veld4view(request):
             break
 
     data = {
-            'page': 'veld1.html',
+            'page': 'veld4.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
             'lamp1': lamp1,
