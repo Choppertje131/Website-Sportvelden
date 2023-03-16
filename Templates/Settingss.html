@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'CSS/Formatinside.css' %}" />
 </head>
 <body>
-    <form class="text-form" method="post">
+    <form class="text-form" method="post" name="Nav">
         <h2>
             Navigatie balk
         </h2>
@@ -19,20 +19,26 @@
         <input autocomplete="off" type="text" name="Box2" placeholder="Navigatie 2" maxlength="9">
         <input autocomplete="off" type="text" name="Box3" placeholder="Navigatie 3" maxlength="9">
         <input autocomplete="off" type="text" name="Box4" placeholder="Navigatie 4" maxlength="9">
-        <button type="submit" name="submit">Opslaan</button>
+        <button type="submit" name="nav">Opslaan</button>
         {% csrf_token %}
     </form>
-    <form class="text-form" method="post">
+    <form class="text-form" method="post" name="Lights">
         <h2>
             Naam Lampen
         </h2>
-        <input autocomplete="off" type="text" name="Box5" placeholder="Lamp 1" maxlength="15">
-        <input autocomplete="off" type="text" name="Box6" placeholder="Lamp 2" maxlength="15">
-        <input autocomplete="off" type="text" name="Box7" placeholder="Lamp 3" maxlength="15">
-        <input autocomplete="off" type="text" name="Box8" placeholder="Lamp 4" maxlength="15">
-        <input autocomplete="off" type="text" name="Box9" placeholder="Lamp 5" maxlength="15">
-        <input autocomplete="off" type="text" name="Box10" placeholder="Lamp 6" maxlength="15">
-        <button type="submit" name="submit">Opslaan</button>
+        <select name="field_id">
+            <option value="VID-A">{{ field.Veld1 }}</option>
+            <option value="VID-B">{{ field.Veld2 }}</option>
+            <option value="VID-C">{{ field.Veld3 }}</option>
+            <option value="VID-D">{{ field.Veld4 }}</option>
+        </select>
+        <input autocomplete="off" type="text" name="l1" placeholder="Lamp 1" maxlength="15">
+        <input autocomplete="off" type="text" name="l2" placeholder="Lamp 2" maxlength="15">
+        <input autocomplete="off" type="text" name="l3" placeholder="Lamp 3" maxlength="15">
+        <input autocomplete="off" type="text" name="l4" placeholder="Lamp 4" maxlength="15">
+        <input autocomplete="off" type="text" name="l5" placeholder="Lamp 5" maxlength="15">
+        <input autocomplete="off" type="text" name="l6" placeholder="Lamp 6" maxlength="15">
+        <button type="submit" name="lights">Opslaan</button>
         {% csrf_token %}
     </form>
 </body>
