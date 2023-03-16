@@ -22,7 +22,7 @@ class Settings_fieldnames(models.Model):
     Veld4 = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.Settings_fieldnames
+        return "Updated_Fieldnames"
 
     class Meta:
         verbose_name_plural = "Settings Field Names"

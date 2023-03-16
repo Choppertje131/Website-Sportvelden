@@ -120,10 +120,28 @@ def veld1view(request):
 def veld2view(request):
     if not request.user.is_authenticated:
         return redirect('/login')
+
+    reversed_list = list(reversed(list(light_names.values())))
+    for item in reversed_list:
+        if item["field_id"] == "VID-B":
+            lamp1 = item["Lamp1"]
+            lamp2 = item["Lamp2"]
+            lamp3 = item["Lamp3"]
+            lamp4 = item["Lamp4"]
+            lamp5 = item["Lamp5"]
+            lamp6 = item["Lamp6"]
+            break
+
     data = {
-            'page': 'Veld2.html',
+            'page': 'veld1.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
+            'lamp1': lamp1,
+            'lamp2': lamp2,
+            'lamp3': lamp3,
+            'lamp4': lamp4,
+            'lamp5': lamp5,
+            'lamp6': lamp6,
         }
 
     return render(request, 'Index.html', data )
@@ -142,21 +160,59 @@ def settingsview(request):
 def veld3view(request):
     if not request.user.is_authenticated:
         return redirect('/login')
+
+    reversed_list = list(reversed(list(light_names.values())))
+    for item in reversed_list:
+        if item["field_id"] == "VID-C":
+            lamp1 = item["Lamp1"]
+            lamp2 = item["Lamp2"]
+            lamp3 = item["Lamp3"]
+            lamp4 = item["Lamp4"]
+            lamp5 = item["Lamp5"]
+            lamp6 = item["Lamp6"]
+            break
+
     data = {
-            'page': 'Veld3.html',
+            'page': 'veld1.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
-        }   
+            'lamp1': lamp1,
+            'lamp2': lamp2,
+            'lamp3': lamp3,
+            'lamp4': lamp4,
+            'lamp5': lamp5,
+            'lamp6': lamp6,
+        }
+
     return render(request, 'Index.html', data)
 
 def veld4view(request):
     if not request.user.is_authenticated:
         return redirect('/login')
+
+    reversed_list = list(reversed(list(light_names.values())))
+    for item in reversed_list:
+        if item["field_id"] == "VID-D":
+            lamp1 = item["Lamp1"]
+            lamp2 = item["Lamp2"]
+            lamp3 = item["Lamp3"]
+            lamp4 = item["Lamp4"]
+            lamp5 = item["Lamp5"]
+            lamp6 = item["Lamp6"]
+            break
+
     data = {
-            'page': 'Veld4.html',
+            'page': 'veld1.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
-        }   
+            'lamp1': lamp1,
+            'lamp2': lamp2,
+            'lamp3': lamp3,
+            'lamp4': lamp4,
+            'lamp5': lamp5,
+            'lamp6': lamp6,
+        }
+
     return render(request, 'Index.html', data)
 
 # def settingssview(request):
@@ -199,7 +255,7 @@ def settingsview(request):
 
 # naam navigatiebalk veranderen
 def settingssview(request):
-    if request.method == "POST":
+    if request.method == "POST" and "nav" in request.POST:
         boxes = {'Box1': 'Veld1', 'Box2': 'Veld2', 'Box3': 'Veld3', 'Box4': 'Veld4'}
         table = Settings_fieldnames()
 
@@ -211,6 +267,21 @@ def settingssview(request):
                 setattr(table, field, Settings_fieldnames.objects.values(field).last()[field])
 
         table.save()
+
+    
+    if request.method == "POST" and "lights" in request.POST:
+        boxes = {'l1': 'Lamp1', 'l2': 'Lamp2', 'l3': 'Lamp3', 'l4': 'Lamp4', 'l5': 'Lamp5', 'l6': 'Lamp6'}
+        table = Settings_lightnames()
+
+        for box, lamp in boxes.items():
+            requested_box = request.POST.get(box)
+            if requested_box != "" and len(requested_box) > 1:
+                setattr(table, lamp, requested_box)
+            else:
+                setattr(table, lamp, Settings_lightnames.objects.values(lamp).last()[lamp])
+        table.field_id = request.POST.get('field_id')
+        table.save()
+
     
     data = {
                 'page': 'Settingss.html',
