@@ -297,4 +297,3 @@ def settingssview(request):
 #     }   
 #     return render(request, 'index.html', data)
 
-     
