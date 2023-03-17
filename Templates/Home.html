@@ -23,9 +23,6 @@
                 <button {% if lamp001_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp1">Lamp 1 {{ light.Lamp1 }}</button>
                 <button {% if lamp002_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp2">Lamp 2 {{ light.Lamp2 }}</button>
                 <button {% if lamp003_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">Lamp 3 {{ light.Lamp3 }}</button>
-                <button {% if lamp004_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 4 {{ light.Lamp4 }}</button>
-                <button {% if lamp005_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp3">Lamp 5 {{ light.Lamp5 }}</button>
-                <button {% if lamp006_bool %} class="lamp-format lamp-aan-format" {% else %} class="lamp-format lamp-uit-format" {% endif %} type="submit" name="Lamp4">Lamp 6 {{ light.Lamp6 }}</button>
                 {% csrf_token %}
             </form>
         </div>
