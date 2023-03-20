@@ -41,4 +41,3 @@ class Settings_lightnames(models.Model):
 
     class Meta:
         verbose_name_plural = "Lights fields"
-

@@ -82,6 +82,7 @@ def registerview(request):
 def homeview(request):
     if not request.user.is_authenticated:
         return redirect('/login')
+    
     data = {
             'page': 'Home.html',
             'error': '',
@@ -217,14 +218,19 @@ def veld4view(request):
 
     return render(request, 'Index.html', data)
 
-# def homeview(request):
-#     Lamp001_bool = False
+def homeview(request):
+    config1_active = request.POST.get("config1_active", False)
+    if request.method == "POST":
+        config1_active = False
+    elif not config1_active:
+        config1_active = True    
 
-#     data = {
-#         'Lamp001_bool': Lamp001_bool,
-#         'page': 'Home.html',
-#     }
-#     return render(request, 'Index.html', data)
+    data = {
+        'config1_active': config1_active,
+        'page': 'Home.html',
+        'field': Settings_fieldnames.objects.last(),
+    }
+    return render(request, 'Index.html', data)
 
 def settingsview(request):
     if request.user.is_authenticated:
@@ -257,7 +263,7 @@ def settingssview(request):
 
     
     if request.method == "POST" and "lights" in request.POST:
-        boxes = {'l1': 'Lamp1', 'l2': 'Lamp2', 'l3': 'Lamp3'}
+        boxes = {'l1': 'Lamp1', 'l2': 'Lamp2', 'l3': 'Lamp3', 'l4': 'Lamp4'}
         table = Settings_lightnames()
 
         for box, lamp in boxes.items():
