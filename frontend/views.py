@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission
 from .models import Settings_fieldnames
 from .models import Settings_lightnames
+from .models import Selecting_fields
 from datetime import datetime
 field_names = Settings_fieldnames
 light_names = Settings_lightnames.objects.all()
@@ -214,23 +215,157 @@ def veld4view(request):
             'lamp4': lamp4,
             'lamp5': lamp5,
             'lamp6': lamp6,
+            
         }
 
     return render(request, 'Index.html', data)
 
-def homeview(request):
-    config1_active = request.POST.get("config1_active", False)
-    if request.method == "POST":
-        config1_active = False
-    elif not config1_active:
-        config1_active = True    
+def toggle_boolean_field(request, field_name):
+    if not Selecting_fields.objects.exists():
+        Selecting_fields.objects.create(field1_active=False, field2_active=False, field3_active=False, field4_active=False, field5_active=False, field6_active=False)
 
+    current_value = getattr(Selecting_fields.objects.last(), field_name)
+    updated_value = not current_value
+
+    setattr(Selecting_fields.objects.last(), field_name, updated_value)
+    Selecting_fields.objects.last().save()
+    
+    return updated_value
+
+def homeview(request):
     data = {
-        'config1_active': config1_active,
+        'field1_active': Selecting_fields.objects.values('field1_active').last()['field1_active'],
+        'field2_active': Selecting_fields.objects.values('field2_active').last()['field2_active'],
+        'field3_active': Selecting_fields.objects.values('field3_active').last()['field3_active'],
+        'field4_active': Selecting_fields.objects.values('field4_active').last()['field4_active'],
+        'field5_active': Selecting_fields.objects.values('field5_active').last()['field5_active'],
+        'field6_active': Selecting_fields.objects.values('field6_active').last()['field6_active'],
         'page': 'Home.html',
+        'field': Selecting_fields(),
         'field': Settings_fieldnames.objects.last(),
     }
+
     return render(request, 'Index.html', data)
+
+def turn_on_setup(field_name):
+    table = Selecting_fields()
+
+    for key, val in Selecting_fields.objects.values().last():
+        if key == field_name:
+            table.key = True
+        else:
+            table.key = False
+
+    table.save()
+
+field1_active = False
+
+# def homeview(request):
+#     global field1_active
+#     if field1_active:
+#         field1_active = False
+#     else:
+#         field1_active = True
+
+#     data = {
+#         'field1_active': field1_active,
+#         'page': 'Home.html',
+#         'field': Selecting_fields(),
+#         'field': Settings_fieldnames.objects.last(),
+#     }
+
+#     return render(request, 'Index.html', data)
+
+# field2_active = False
+
+# def homeview(request):
+#     global field2_active
+#     if field2_active:
+#         field2_active = False
+#     else:
+#         field2_active = True
+
+#     data = {
+#         'field2_active': field2_active,
+#         'page': 'Home.html',
+#         'field': Selecting_fields(),
+#         'field': Settings_fieldnames.objects.last(),
+        
+#     }
+
+#     return render(request, 'Index.html', data)
+
+# field3_active = False
+
+# def homeview(request):
+#     global field1_active
+#     if field3_active:
+#         field3_active = False
+#     else:
+#         field3_active = True
+
+#     data = {
+#         'field3_active': field3_active,
+#         'page': 'Home.html',
+#         'field': Selecting_fields(),
+#         'field': Settings_fieldnames.objects.last(),
+#     }
+
+#     return render(request, 'Index.html', data)
+
+# field4_active = False
+
+# def homeview(request):
+#     global field4_active
+#     if field4_active:
+#         field4_active = False
+#     else:
+#         field4_active = True
+
+#     data = {
+#         'field4_active': field4_active,
+#         'page': 'Home.html',
+#         'field': Selecting_fields(),
+#         'field': Settings_fieldnames.objects.last(),
+#     }
+
+#     return render(request, 'Index.html', data)
+
+# field5_active = False
+
+# def homeview(request):
+#     global field5_active
+#     if field5_active:
+#         field5_active = False
+#     else:
+#         field5_active = True
+
+#     data = {
+#         'field5_active': field5_active,
+#         'page': 'Home.html',
+#         'field': Selecting_fields(),
+#         'field': Settings_fieldnames.objects.last(),
+#     }
+
+#     return render(request, 'Index.html', data)
+
+# field6_active = False
+
+# def homeview(request):
+#     global field6_active
+#     if field6_active:
+#         field6_active = False
+#     else:
+#         field6_active = True
+
+#     data = {
+#         'field6_active': field6_active,
+#         'page': 'Home.html',
+#         'field': Selecting_fields(),
+#         'field': Settings_fieldnames.objects.last(),
+#     }
+
+#     return render(request, 'Index.html', data)
 
 def settingsview(request):
     if request.user.is_authenticated:
@@ -305,4 +440,3 @@ def settingssview(request):
 #         'field': Settings_lightnames.objects.last(),
 #     }   
 #     return render(request, 'index.html', data)
-

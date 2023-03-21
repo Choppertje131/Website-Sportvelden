@@ -16,32 +16,32 @@
         <form class="fields" method="post">
             <div class="full-map">
                 <div class="picture">
-                    <button><img {% if config1_active %} src="{% static 'IMG/Soccerfield-half-bottom.png' %}" {% else %} src="{% static 'IMG/Soccerfield.png' %}"{% endif %} alt=""></button>
-                </div>
-            </div>
-            <div class="half-bottom">
-                <div class="picture">
-                    <button><img src="{% static 'IMG/Soccerfield-half-bottom.png' %}" alt=""></button>
+                    <button><img {% if field1_active %} src="{% static 'IMG/Soccerfield_active.png' %}" {% else %} src="{% static 'IMG/Soccerfield.png' %}"{% endif %} alt=""></button>
                 </div>
             </div>
             <div class="half-top">
                 <div class="picture">
-                    <button><img src="{% static 'IMG/Soccerfield-half-top.png' %}" alt=""></button>
+                    <button><img {% if field2_active %} src="{% static 'IMG/Soccerfield-half-bottom-active.png' %}" {% else %} src="{% static 'IMG/Soccerfield-half-bottom.png' %}"{% endif %} alt=""></button>
+                </div>
+            </div>
+            <div class="half-bottom">
+                <div class="picture">
+                    <button><img {% if field3_active %} src="{% static 'IMG/Soccerfield-half-top-active.png' %}" {% else %} src="{% static 'IMG/Soccerfield-half-top.png' %}"{% endif %} alt=""></button>
                 </div>
             </div>
             <div class="keeper-bottom">
                 <div class="picture">
-                    <button><img src="{% static 'IMG/Soccerfield-keeper-bottom.png' %}" alt=""></button>
+                    <button><img {% if field4_active %} src="{% static 'IMG/Soccerfield-keeper-bottom-active.png' %}" {% else %} src="{% static 'IMG/Soccerfield-keeper-bottom.png' %}"{% endif %} alt=""></button>
                 </div>
             </div>
             <div class="keeper-top">
                 <div class="picture">
-                    <button><img src="{% static 'IMG/Soccerfield-keeper-top.png' %}" alt=""></button>
+                    <button><img {% if field5_active %} src="{% static 'IMG/Soccerfield-keeper-top-active.png' %}" {% else %} src="{% static 'IMG/Soccerfield-keeper-top.png' %}"{% endif %} alt=""></button>
                 </div>
             </div>
             <div class="both-keeper">
                 <div class="picture">
-                    <button><img src="{% static 'IMG/Soccerfield-both-keeper.png' %}" alt=""></button>
+                    <button><img {% if field6_active %} src="{% static 'IMG/Soccerfield-both-keeper-active.png' %}" {% else %} src="{% static 'IMG/Soccerfield-both-keeper.png' %}"{% endif %} alt=""></button>
                 </div>
             </div>
             {% csrf_token %}
