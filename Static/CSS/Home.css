@@ -2,11 +2,13 @@
 ===================================================================================================================================================================================
 Bedrijf:        Strago Electro
 Opdrachtgever:  
-Versie:         0.2
+Versie:         0.4
 ===================================================================================================================================================================================
 Versie          Programeur          Omschrijving                    Datum           Status
 0.1             Twan van Zuijdam    Eerste Opzet                    06-03-2023      Concept
 0.2             Twan van Zuijdam    Mobile/Tablet version added     10-03-2023      Concept
+0.3             Twan van Zuijdam    Changed the fields              20-10-2023      Concept
+0.4             Twan van Zuijdam    Changed the buttons             20-10-2023      Concept
 ===================================================================================================================================================================================
 */
 
@@ -66,10 +68,11 @@ Versie          Programeur          Omschrijving                    Datum       
     }
 
     .lamp-format.lamp-aan-format {
-        color: gold;
+        color: black;
+        background-color: #02499b;
     }
 
-    .lamp-format.lamp-uit-format {
+    .lamp-format {
         border: #02499b;
         border-radius: 25px;
         color: black;
@@ -84,7 +87,7 @@ Versie          Programeur          Omschrijving                    Datum       
         border: 2px solid #02499b;
     }
 
-    .lamp-format.lamp-uit-format:hover {
+    .lamp-format:hover {
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         background-color: #02499b;
       }
