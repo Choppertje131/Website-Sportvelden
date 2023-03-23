@@ -42,3 +42,16 @@ class Settings_lightnames(models.Model):
     class Meta:
         verbose_name_plural = "Lights fields"
 
+class Selecting_fields(models.Model):
+    field1_active = models.BooleanField(default = False)
+    field2_active = models.BooleanField(default = False)
+    field3_active = models.BooleanField(default = False)
+    field4_active = models.BooleanField(default = False)
+    field5_active = models.BooleanField(default = False)
+    field6_active = models.BooleanField(default = False)
+
+    def __str__(self):
+        return "Updated fields"
+
+    class Meta:
+        verbose_name_plural = "Fields"

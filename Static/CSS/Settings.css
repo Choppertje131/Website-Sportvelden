@@ -7,6 +7,7 @@ Versie:         0.2
 Versie          Programeur          Omschrijving          Datum           Status
 0.1             Twan van Zuijdam    Eerste Opzet          06-03-2023      Concept
 0.2             Twan van Zuijdam    Added text form       14-03-2023      Concept
+0.9             Twan van Zuijdam    Reviewed               17-03-2023      Concept
 ===================================================================================================================================================================================
 */
 
@@ -48,6 +49,22 @@ Versie          Programeur          Omschrijving          Datum           Status
         cursor: pointer;
         background-color: #02499b;
         color: #ffffff;
+    }
+
+    .field_id {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid grey;
+        height: 30px;
+        width: 50vh;
+        margin-bottom: 20px;
+    }
+
+    select {
+        height: 30px;
+        width: 50vh;
     }
 
     h2 {
@@ -102,6 +119,24 @@ Versie          Programeur          Omschrijving          Datum           Status
         cursor: pointer;
         background-color: #02499b;
         color: #ffffff;
+    }
+    
+    .field_id {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid grey;
+        width: 100%;
+        height: 30px;
+        width: 300px;
+        border: none;
+        margin-top: 20px;
+    }
+
+    select {
+        height: 30px;
+        width: 300px;
     }
 
     h2 {
