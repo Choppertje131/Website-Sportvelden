@@ -1,16 +1,17 @@
-# all the imports to make the whole site work
-import time as delay
+# Django framework packages
 from datetime import datetime, date, time
-from django.shortcuts import render, redirect
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.models import User
-from django.contrib.auth.models import Permission
-from .models import Settings_fieldnames
-from .models import Settings_lightnames
-from .models import Selecting_fields
+from django.contrib.auth.models import User, Permission
+from .models import Settings_fieldnames, Settings_lightnames, Selecting_fields
+
+# Own packages
+from .site_functions import get_field_button_states, select_field_state
+
+# Global variables
 field_names = Settings_fieldnames
 light_names = Settings_lightnames.objects.all()
+
 
 # line 15 to line 47 makes sure that you cant enter the website without having an account.
 def loginview(request): 
@@ -82,20 +83,67 @@ def registerview(request):
 
     return render(request, 'Index.html', data )
 
-# line 86 to 96 makes sure that you are logged in before you can view the site
+
+
+
+
+
+
+
+
+
+
+
+
+# --------------------- CODE SEBAS ----------------------------------
 def homeview(request):
     if not request.user.is_authenticated:
         return redirect('/login')
-    
+
+    if request.method == 'POST':
+        fields = Selecting_fields.objects.all().values().last()
+        field_names = [key for key in fields if key != 'id']
+        
+        for idx, key in enumerate(["0", "1", "2", "3", "4", "5"]):
+            if key in request.POST:
+                field = field_names[idx]
+                select_field_state(field)
+
+    field_bools = get_field_button_states()
+
     data = {
             'page': 'Home.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
+            'field1_active': field_bools[0],
+            'field2_active': field_bools[1],
+            'field3_active': field_bools[2],
+            'field4_active': field_bools[3],
+            'field5_active': field_bools[4],
+            'field6_active': field_bools[5],
         }
 
     return render(request, 'Index.html',data)
 
-# line 99 to line 126 are to make sure that you are logged in before you can view the site, but also to display the changes that are made in the Settings page.
+# --------------------- CODE SEBAS ----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def veld1view(request):
     if not request.user.is_authenticated:
         return redirect('/login')
@@ -227,15 +275,6 @@ def veld4view(request):
 
     return render(request, 'Index.html', data)
 
-# def settingssview(request):
-#     if not request.user.is_authenticated:
-#         return redirect('/login')
-#     data = {
-#             'page': 'Settingss.html',
-#             'error': '',
-#             'field': Settings_fieldnames.objects.last(),
-#         }   
-#     return render(request, 'Index.html', data)
 
 def turn_on_setup(field_name):
     table = Selecting_fields()
@@ -248,174 +287,6 @@ def turn_on_setup(field_name):
 
     table.save()
 
-field1_active = False
-
-# line 272 to line 309, are there to make sure that all the lights will turn off at a specific time.
-# def homeview(request):
-
-#     now = datetime.now()
-
-#     time_range_start = "23:00"
-#     time_range_end = "06:00"
-
-#     lamp001_bool = True
-#     lamp002_bool = True
-#     lamp003_bool = True
-#     lamp004_bool = True
-
-#     current_time = now.strftime("%H:%M")
-
-#     if current_time == time_range_start:
-#         lamp001_bool = False
-#         lamp002_bool = False
-#         lamp003_bool = False
-#         lamp004_bool = False
-#     elif current_time == time_range_end:
-#         lamp001_bool = True
-#         lamp002_bool = True
-#         lamp003_bool = True
-#         lamp004_bool = True
-
-#     data = {
-#             'page': 'Home.html',
-#             'error': '',
-#             'field': Settings_fieldnames.objects.last(),
-#             'lamp001_bool': lamp001_bool,
-#             'lamp002_bool': lamp002_bool,
-#             'lamp003_bool': lamp003_bool,
-#             'lamp004_bool': lamp004_bool,
-#         }
-
-#     return render(request, 'Index.html', data)
-
-def homeview(request):
-    
-    now = datetime.now()
-
-    time_range_start = "10:00"
-    time_range_end = "06:00"
-
-    if 'Lamp1' in request.POST:
-        request.session['lamp001_bool'] = not request.session.get('lamp001_bool', True)
-    if 'Lamp2' in request.POST:
-        request.session['lamp002_bool'] = not request.session.get('lamp002_bool', True)
-    if 'Lamp3' in request.POST:
-        request.session['lamp003_bool'] = not request.session.get('lamp003_bool', True)
-    if 'Lamp4' in request.POST:
-        request.session['lamp004_bool'] = not request.session.get('lamp004_bool', True)
-
-    current_time = now.strftime("%H:%M")
-
-    lamp001_bool = request.session.get('lamp001_bool', True)
-    lamp002_bool = request.session.get('lamp002_bool', True)
-    lamp003_bool = request.session.get('lamp003_bool', True)
-    lamp004_bool = request.session.get('lamp004_bool', True)
-
-    if current_time == time_range_start:
-        lamp001_bool = False
-        lamp002_bool = False
-        lamp003_bool = False
-        lamp004_bool = False
-    elif current_time == time_range_end:
-        lamp001_bool = True
-        lamp002_bool = True
-        lamp003_bool = True
-        lamp004_bool = True
-
-    data = {
-            'page': 'Home.html',
-            'error': '',
-            'field': Settings_fieldnames.objects.last(),
-            'lamp001_bool': lamp001_bool,
-            'lamp002_bool': lamp002_bool,
-            'lamp003_bool': lamp003_bool,
-            'lamp004_bool': lamp004_bool,
-        }
-
-    return render(request, 'Index.html', data)
-
-# line 310 to line 391 makes the fields on the home page change color when its activated.
-field1_active = False
-field2_active = False
-field3_active = False
-field4_active = False
-field5_active = False
-field6_active = False
-
-def homeview(request):
-    global field1_active, field2_active, field3_active, field4_active, field5_active, field6_active
-
-    if not request.user.is_authenticated:
-        return redirect('/login')
-
-    if request.method == 'POST':
-        if 'field1_active' in request.POST:
-            field1_active = not field1_active
-        elif 'field2_active' in request.POST:
-            field2_active = not field2_active
-        elif 'field3_active' in request.POST:
-            field3_active = not field3_active
-        elif 'field4_active' in request.POST:
-            field4_active = not field4_active
-        elif 'field5_active' in request.POST:
-            field5_active = not field5_active
-        elif 'field6_active' in request.POST:
-            field6_active = not field6_active
-
-    if field1_active == True:
-        field2_active = False
-        field3_active = False
-        field4_active = False
-        field5_active = False
-        field6_active = False
-
-    if field2_active == True:
-        field1_active = False
-        field3_active = False
-        field4_active = False
-        field5_active = False
-        field6_active = False
-
-    if field3_active == True:
-        field1_active = False
-        field2_active = False
-        field4_active = False
-        field5_active = False
-        field6_active = False
-
-    if field4_active == True:
-        field1_active = False
-        field2_active = False
-        field3_active = False
-        field5_active = False
-        field6_active = False
-
-    if field5_active == True:
-        field1_active = False
-        field2_active = False
-        field3_active = False
-        field4_active = False
-        field6_active = False
-
-    if field6_active == True:
-        field1_active = False
-        field2_active = False
-        field3_active = False
-        field4_active = False
-        field5_active = False
-
-    data = {
-        'field1_active': field1_active,
-        'field2_active': field2_active,
-        'field3_active': field3_active,
-        'field4_active': field4_active,
-        'field5_active': field5_active,
-        'field6_active': field6_active,
-        'page': 'Home.html',
-        'field': Settings_fieldnames.objects.last(),
-    }
-
-    return render(request, 'Index.html', data)
 
 # line 393 to 405 makes sure that if you've got the 'Guest' role, that you cant change anything on the site.
 def settingsview(request):
