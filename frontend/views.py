@@ -6,11 +6,10 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission
-from .models import Settings_fieldnames
-from .models import Settings_lightnames
-from .models import Selecting_fields
+from .models import Settings_fieldnames, Settings_lightnames, Selecting_fields, LightButton
 field_names = Settings_fieldnames
 light_names = Settings_lightnames.objects.all()
+light_button = LightButton
 
 # line 15 to line 47 makes sure that you cant enter the website without having an account.
 def loginview(request): 
@@ -86,39 +85,11 @@ def registerview(request):
 def homeview(request):
     if not request.user.is_authenticated:
         return redirect('/login')
-    
-    now = datetime.now()
-
-    time_range_start = "23:00"
-    time_range_end = "06:00"
-
-    lamp001_bool = True
-    lamp002_bool = True
-    lamp003_bool = True
-    lamp004_bool = True
-
-    current_time = now.strftime("%H:%M")
-
-    if current_time == time_range_start:
-        lamp001_bool = False
-        lamp002_bool = False
-        lamp003_bool = False
-        lamp004_bool = False
-    elif current_time == time_range_end:
-        lamp001_bool = True
-        lamp002_bool = True
-        lamp003_bool = True
-        lamp004_bool = True
-
-    
+        
     data = {
             'page': 'Home.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
-            'lamp001_bool': lamp001_bool,
-            'lamp002_bool': lamp002_bool,
-            'lamp003_bool': lamp003_bool,
-            'lamp004_bool': lamp004_bool,
         }
 
     return render(request, 'Index.html',data)
@@ -283,48 +254,48 @@ def turn_on_setup(field_name):
 field1_active = False
 
 # line 272 to line 309, are there to make sure that all the lights will turn off at a specific time.
+# def homeview(request):
+    
+#     now = datetime.now()
+
+#     time_range_start = "23:00"
+#     time_range_end = "06:00"
+
+#     lamp001_bool = True
+#     lamp002_bool = True
+#     lamp003_bool = True
+#     lamp004_bool = True
+
+#     current_time = now.strftime("%H:%M")
+
+#     if current_time == time_range_start:
+#         lamp001_bool = False
+#         lamp002_bool = False
+#         lamp003_bool = False
+#         lamp004_bool = False
+#     elif current_time == time_range_end:
+#         lamp001_bool = True
+#         lamp002_bool = True
+#         lamp003_bool = True
+#         lamp004_bool = True
+
+#     data = {
+#             'page': 'Home.html',
+#             'error': '',
+#             'field': Settings_fieldnames.objects.last(),
+#             'lamp001_bool': lamp001_bool,
+#             'lamp002_bool': lamp002_bool,
+#             'lamp003_bool': lamp003_bool,
+#             'lamp004_bool': lamp004_bool,
+#         }
+
+#     return render(request, 'Index.html', data)
+
 def homeview(request):
     
     now = datetime.now()
 
     time_range_start = "23:00"
-    time_range_end = "06:00"
-
-    lamp001_bool = True
-    lamp002_bool = True
-    lamp003_bool = True
-    lamp004_bool = True
-
-    current_time = now.strftime("%H:%M")
-
-    if current_time == time_range_start:
-        lamp001_bool = False
-        lamp002_bool = False
-        lamp003_bool = False
-        lamp004_bool = False
-    elif current_time == time_range_end:
-        lamp001_bool = True
-        lamp002_bool = True
-        lamp003_bool = True
-        lamp004_bool = True
-
-    data = {
-            'page': 'Home.html',
-            'error': '',
-            'field': Settings_fieldnames.objects.last(),
-            'lamp001_bool': lamp001_bool,
-            'lamp002_bool': lamp002_bool,
-            'lamp003_bool': lamp003_bool,
-            'lamp004_bool': lamp004_bool,
-        }
-
-    return render(request, 'Index.html', data)
-
-def homeview(request):
-    
-    now = datetime.now()
-
-    time_range_start = "10:00"
     time_range_end = "06:00"
 
     if 'Lamp1' in request.POST:
@@ -370,9 +341,6 @@ def homeview(request):
 def homeview(request):
     field_settings = Selecting_fields.objects.last()
 
-    if not request.user.is_authenticated:
-        return redirect('/login')
-
     active_fields = [field for field in ['field1_active', 'field2_active', 'field3_active', 'field4_active', 'field5_active', 'field6_active'] if getattr(field_settings, field)]
     enabled = bool(active_fields)
 
@@ -398,6 +366,39 @@ def homeview(request):
 
     return render(request, 'Index.html', data)
 
+# lines 404 to 433 makes sure that you can sellect the correct light option
+def homeview(request):
+    light_button = LightButton.objects.last()
+
+    active_lamps = [lamp for lamp in ['Lamp001_bool', 'Lamp002_bool', 'Lamp003_bool', 'Lamp004_bool'] if getattr(light_button, lamp)]
+    enabled = bool(active_lamps)
+
+    if request.method == 'POST':
+        for lamp in ['Lamp001_bool', 'Lamp002_bool', 'Lamp003_bool', 'Lamp004_bool']:
+            if lamp in request.POST:
+                setattr(light_button, lamp, lamp not in active_lamps)
+                light_button.save()
+                active_lamps = [lamp] if lamp not in active_lamps else []
+                enabled = bool(active_lamps)
+                for other_lamp in ['Lamp001_bool', 'Lamp002_bool', 'Lamp003_bool', 'Lamp004_bool']:
+                    if other_lamp != lamp:
+                        setattr(light_button, other_lamp, False)
+                        light_button.save()
+
+    lamp_data = {}
+    for field_name in ['Lamp001_bool', 'Lamp002_bool', 'Lamp003_bool', 'Lamp004_bool']:
+        lamp_data[field_name.lower()] = getattr(light_button, field_name)
+
+    data = {
+            'page': 'Home.html',
+            'light': lamp_data,
+            'error': "",
+            'field': Settings_fieldnames.objects.last(),
+            'enabled': enabled,
+            'active_lamps': active_lamps,
+        }
+    return render(request, 'Index.html', data)
+
 # line 389 to 401 makes sure that if you've got the 'Guest' role, that you cant change anything on the site.
 def settingsview(request):
     if request.user.is_authenticated:
@@ -413,7 +414,7 @@ def settingsview(request):
         }   
     return render(request, 'Index.html', data)
 
-# line 404 to 438 changes the name in the nav-bar. It also changes the name of the lights displayed on a certain kind of page
+# line 417 to 452 changes the name in the nav-bar. It also changes the name of the lights displayed on a certain kind of page
 def settingssview(request):
     if request.method == "POST" and "nav" in request.POST:
         boxes = {'Box1': 'Veld1', 'Box2': 'Veld2', 'Box3': 'Veld3', 'Box4': 'Veld4'}

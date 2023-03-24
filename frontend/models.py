@@ -49,3 +49,12 @@ class Selecting_fields(models.Model):
     field4_active = models.BooleanField(default = False)
     field5_active = models.BooleanField(default = False)
     field6_active = models.BooleanField(default = False)
+
+class LightButton(models.Model):
+    Lamp001_bool = models.BooleanField(default = False)
+    Lamp002_bool = models.BooleanField(default = False)
+    Lamp003_bool = models.BooleanField(default = False)
+    Lamp004_bool = models.BooleanField(default = False)
+
+    def __str__(self):
+        return f'LightButton {self.id}'
