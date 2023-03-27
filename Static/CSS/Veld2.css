@@ -111,49 +111,69 @@ Versie          Programeur          Omschrijving          Datum           Status
         text-decoration: none;
     }
 
-    .field-game {
-        display: block;
-        margin-left: auto;
-        margin-right: 345px;
+    .fields {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 20px;
+        left: 39%;
+        margin-top: 250px;
+        position: relative;
         width: 38%;
+        scale: 40%;
+        transform: translateX(-50%) rotate(-90deg);
     }
 
-    .controls-game {
+    .controls {
         display: grid;
-        grid-template-columns: 80px 60px 85px;
+        grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        column-gap: 149.5px;
-        row-gap: 279px;
+        column-gap: 5px;
+        row-gap: 15px;
+        left: 50%;
+        margin-top: -250px;
+        transform: translateX(-50%);
         position: absolute;
         align-items: center;
-        top: 284px;
-        justify-content: space-evenly;
+        justify-content: center;
+        outline: none;
+        text-align: center;
+        
     }
 
-    .field-practice {
-        display: block;
-        margin-left: auto;
-        margin-right: 345px;
-        width: 38%;
+    button {
+        outline: none;
+        border: none;
     }
 
-    .controls-practice {
-        display: grid;
-        grid-template-columns: 80px 60px 85px;
-        grid-template-rows: 1fr 1fr;
-        column-gap: 149.5px;
-        row-gap: 279px;
-        position: absolute;
-        align-items: center;
-        margin-top: -330px;
-        justify-content: space-evenly;
+    .picture button:hover {
+        cursor: pointer;
     }
 
     .lamp-format.lamp-aan-format {
-        color: gold;
+        color: white;
+        background-color: #02499b;
     }
 
-    .lamp-format.lamp-uit-format {
+    .lamp-format {
+        border: #02499b;
+        border-radius: 25px;
         color: black;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border: 2px solid #02499b;
     }
+
+    .lamp-format:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        background-color: #02499b;
+        color: white;
+      }
 }
