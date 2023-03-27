@@ -23,6 +23,10 @@ Versie          Programeur          Omschrijving                    Datum       
     .Logout {
         text-decoration: none;
     }
+    h4 {
+        color: #02499b;
+    }
+
     body {
         overflow: hidden;
     }
@@ -48,8 +52,8 @@ Versie          Programeur          Omschrijving                    Datum       
         row-gap: 282px;
         position: absolute;
         align-items: center;
-        top: 600px;
-        margin-left: 450px;
+        top: 630px;
+        margin-left: 436px;
         justify-content: space-evenly;
     }
  
@@ -59,11 +63,21 @@ Versie          Programeur          Omschrijving                    Datum       
         width: 80px;
     } */
 
-    .lamp-format.lamp-aan-format {
-        color: gold;
+    button {
+        outline: none;
+        border: none;
     }
 
-    .lamp-format.lamp-uit-format {
+    .picture button:hover {
+        cursor: pointer;
+    }
+
+    .lamp-format.lamp-aan-format {
+        color: white;
+        background-color: #02499b;
+    }
+
+    .lamp-format {
         border: #02499b;
         border-radius: 25px;
         color: black;
@@ -78,9 +92,10 @@ Versie          Programeur          Omschrijving                    Datum       
         border: 2px solid #02499b;
     }
 
-    .lamp-format.lamp-uit-format:hover {
+    .lamp-format:hover {
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         background-color: #02499b;
+        color: white;
       }
 }
 
