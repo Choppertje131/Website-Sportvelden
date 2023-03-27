@@ -188,33 +188,15 @@ def veld4view(request):
     if not request.user.is_authenticated:
         return redirect('/login')
 
-    reversed_list = list(reversed(list(light_names.values())))
-    for item in reversed_list:
-        if item["field_id"] == "VID-D":
-            lamp1 = item["Lamp1"]
-            lamp2 = item["Lamp2"]
-            lamp3 = item["Lamp3"]
-            lamp4 = item["Lamp4"]
-            lamp5 = item["Lamp5"]
-            lamp6 = item["Lamp6"]
-            break
-
     data = {
             'page': 'veld4.html',
             'error': '',
-            'field': Settings_fieldnames.objects.last(),
-            'lamp1': lamp1,
-            'lamp2': lamp2,
-            'lamp3': lamp3,
-            'lamp4': lamp4,
-            'lamp5': lamp5,
-            'lamp6': lamp6,
-            
+            'field': Settings_fieldnames.objects.last(),          
         }
 
     return render(request, 'Index.html', data)
 
-# line 272 to line 309, are there to make sure that all the lights will turn off at a specific time.
+# line 199 to line 281, are there to make sure that all the lights will turn off at a specific time.
 # def homeview(request):
     
 #     now = datetime.now()
@@ -298,7 +280,7 @@ def homeview(request):
 
     return render(request, 'Index.html', data)
 
-# lines 302 to 500 makes sure that you can sellect the correct light option and makes the fields on the home page change color when its activated. There are 4 the same codes, but for a different page
+# lines 284 to 482 makes sure that you can sellect the correct light option and makes the fields on the home page change color when its activated. There are 4 the same codes, but for a different page
 def homeview(request):
     light_button = LightButton.objects.last()
     active_lamps = [lamp for lamp in ['Lamp001_bool', 'Lamp002_bool', 'Lamp003_bool', 'Lamp004_bool'] if getattr(light_button, lamp)]
@@ -499,7 +481,7 @@ def veld3view(request):
     }
     return render(request, 'Index.html', data)
 
-# line 503 to 515 makes sure that if you've got the 'Guest' role, that you cant change anything on the site.
+# line 485 to 497 makes sure that if you've got the 'Guest' role, that you cant change anything on the site.
 def settingsview(request):
     if request.user.is_authenticated:
         if request.user.has_perm('Guest','Guest'):
@@ -514,7 +496,7 @@ def settingsview(request):
         }   
     return render(request, 'Index.html', data)
 
-# line 518 to 552 changes the name in the nav-bar. It also changes the name of the lights displayed on a certain kind of page
+# line 500 to 534 changes the name in the nav-bar. It also changes the name of the lights displayed on a certain kind of page
 def settingssview(request):
     if request.method == "POST" and "nav" in request.POST:
         boxes = {'Box1': 'Veld1', 'Box2': 'Veld2', 'Box3': 'Veld3', 'Box4': 'Veld4'}
