@@ -1,13 +1,4 @@
-<!-- {% comment %} Inlogpagina 
-===================================================================================================================================================================================
-Bedrijf:        Strago Electro
-Opdrachtgever:  
-Versie:         0.1
-===================================================================================================================================================================================
-Versie          Programeur          Omschrijving          Datum           Status
-0.1             Twan van Zuijdam    Eerste Opzet          06-03-2023      Concept
-=================================================================================================================================================================================== {% endcomment %}
--->
+
 {% load static %} 
 
 <!DOCTYPE html>
@@ -17,7 +8,7 @@ Versie          Programeur          Omschrijving          Datum           Status
         <link rel="icon" href="{% static 'IMG/strago-electro-favicon.png' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'CSS/Register.css' %}" />
+        <link rel="stylesheet" href="{% static 'CSS/Register.css' %}" /> <!-- Due to an error, we are forced to use the Register styling. Nevertheless, its exactly the same as the login styling-->
     </head>
     <body>
         <form class="login-form" method="POST" autocomplete="off">
