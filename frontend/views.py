@@ -26,20 +26,20 @@ def loginview(request):
                     'page': 'Login.html', 
                     'error': 'User account not activated',
                 }
-                return render(request, 'Index.html', data)
+                return render(request, 'Login.html', data)
         else:
             data = {
                 'page': 'Login.html',
                 'error': 'Incorrect password and/or username. Note that both fields may be case-sensitive.',
             }
-            return render(request, 'Index.html', data)
+            return render(request, 'Login.html', data)
 
     data = {
         'page': 'Login.html',
         'error': '',
     }
 
-    return render(request, 'Index.html', data)
+    return render(request, 'Login.html', data)
 
 def logoutview(request):
     logout(request)
