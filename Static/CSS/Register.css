@@ -44,6 +44,8 @@ Versie          Programeur          Omschrijving          Datum           Status
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow-y: hidden; 
+        overflow-x: hidden; 
     }
 
     .login-form,
