@@ -189,7 +189,7 @@ def veld4view(request):
         return redirect('/login')
 
     data = {
-            'page': 'veld4.html',
+            'page': 'Veld4.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),          
         }
@@ -531,7 +531,7 @@ def settingssview(request):
                 'error': '',
                 'field': Settings_fieldnames.objects.last(),
             }   
-    return render(request, 'index.html', data)
+    return render(request, 'Index.html', data)
 
 # Naam lampen veranderen
 # def settingssview(request):

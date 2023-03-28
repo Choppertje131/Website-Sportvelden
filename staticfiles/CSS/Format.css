@@ -1,0 +1,304 @@
+/* Format 
+===================================================================================================================================================================================
+Bedrijf:        Strago Electro
+Opdrachtgever:  
+Versie:         1.0
+===================================================================================================================================================================================
+Versie          Programeur          Omschrijving                    Datum           Status
+0.1             Twan van Zuijdam    Eerste Opzet                    06-03-2023      Concept
+0.2             Twan van Zuijdam    Mobile/Tablet version added     10-03-2023      Concept
+0.9             Twan van Zuijdam    Reviewed                        17-03-2023      Concept
+1.0             Twan van Zuijdam    Page Approved                   17-03-2023      Definitief.
+===================================================================================================================================================================================
+*/
+
+    :root{
+        --bgGreen: white;
+    }
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Laptop / pc screen */
+ @media(min-width: 900px) {
+    :root{
+        --bgGreen: white;
+    }
+
+    body {
+        background: var(--bgGreen);
+    }
+
+    .content{
+        background: white;
+        height: 90px;
+        margin-top: 0px;
+    }
+
+    header {
+        height: 200px;
+        position: relative;
+    }
+
+    .mobile-header {
+        display: none;
+    }
+
+    .inhoud {
+        background: white;
+        height: 90px;
+        margin-top: 50px;
+    }
+
+    .navlist {
+        height: 90px;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-left: 390px;
+        margin-right: 5%;
+    }
+
+    .navlist a {
+        color: #02499b;
+        font-size: 25px;
+    }
+
+    .bar {
+        height: 20px;
+        width: 100%;
+        background: #02499b;
+        position: absolute;
+        margin-top: 15vh;
+        box-shadow: 0px 11px 20px 1px #999999;
+        
+    }
+
+    .logo-case {
+        width: 0px;
+        padding: 0px;
+        background: white;
+        border: 0px solid grey;
+        position: absolute;
+        z-index: 2;
+        top: -47px;
+        left: 5%;
+        display: flex;
+    }
+
+    .logo-case img {
+        width: 155px;
+        padding: 20px;
+        top: 65px;
+        margin-top: 5px;
+        left: 5%;
+        display: flex;
+    }
+
+    .logo-case-2 {
+        width: 0px;
+        height: 150px;
+        margin-bottom: auto;
+        padding: 0px;
+        background: none;
+        border: 0px solid grey;
+        position: absolute;
+        z-index: 2;
+        top: -45px;
+        right: 15%;
+        display: flex;
+    }
+
+    .logo-case-2 img {
+        width: 155px;
+        padding: 20px;
+        top: 0px;
+        margin-top: 5px;
+        right: 0%;
+        display: flex;
+    }
+
+    .clock {
+        margin-bottom: -10px;
+    }
+    /* .logo a {
+        width: 60px;
+        height: 60px;
+        margin-left: 50px;
+        display: flex;
+    }
+
+    .logo {
+        width: 50%;
+        height: 50%;
+    }
+
+    .navlist {
+        position: relative;
+        width: 100%;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none; */
+
+        /* height: 90px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 5%; 
+     }*/
+
+     .navlist ul {
+         display: flex;
+         width: 350px;
+     }
+
+     .navlist ul li {
+        list-style: none;
+        position: relative;
+        width: 70px;
+        height: 60px;
+        z-index: 2;
+    }
+
+    .navlist ul li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        color: black;
+        font-size: 25px;
+    }
+
+    .navlist ul li a .icon {
+        position: relative;
+        display: block;
+        width: 55px;
+        height: 55px;
+        /* background: #f00; */
+        text-align: center;
+        line-height: 65px;
+        border-radius: 50%;
+        transition: 0.5s;
+        transition-delay: 0s;
+    }
+}
+
+/* Tablet screen */
+@media (max-width: 900px) {
+
+    .inhoud {
+        background: white;
+        height: 90px;
+        margin-top: 50px;
+    }
+
+    header {
+        height: 160px;
+        position: relative;
+    }
+
+    .pc-header {
+        display: none;
+    }
+
+    .inhoud {
+        background: #02499b;
+        height: 60px;
+        margin-top: 80px;
+        width: 100%;
+    }
+
+    .navlist {
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s ease;
+        display: flex;
+        position: absolute;
+        height: 200px;
+        background: whitesmoke;
+        border: 2px solid black;
+        width: 160px;
+        left: 25px;
+        top: 80px;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 5;
+        
+    }
+
+    .navlist a {
+        color: #02499b;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .navlist.open {
+        opacity: 1;
+        pointer-events: all;
+        top: 100px;
+    }
+
+    .logo-case {
+        width: 180px;
+        padding: 10px;
+        background: white;
+        border: 2px groove black;
+        position: absolute;
+        z-index: 2;
+        top: -40px;
+        left: 25px;
+    }
+
+    .logo-case img {
+        width: 170px;
+    }
+
+    .burger {
+        height: 100%;
+        width: 60px;
+        float: right;
+        margin-right: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .burger-line1,
+    .burger-line2,
+    .burger-line3 {
+        background: whitesmoke;
+        height: 6px;
+        width: 50px;
+        margin: 4px;
+        border-radius: 5px;
+        transition: all 0.4s ease;
+    }
+
+    .burger-line2.open {
+        opacity: 0;
+        position: absolute;
+    }
+
+    .burger-line1.open {
+        position: absolute;
+        transform: rotate(45deg);
+    }
+
+    .burger-line3.open {
+        position: absolute;
+        transform: rotate(135deg);
+    }
+}
