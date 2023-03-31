@@ -27,7 +27,7 @@
                     <a href="/logout" class="Logout">Log-out</a>
                 </div>
                 <div class="logo-case-2">
-                        <img class="login-form__logo" src="{% static 'IMG/Vereniging.png' %}" alt="Logo">
+                    <img {% if logo.logo_image %} src="{{ logo.logo_image.url }}" {% endif %} class="login-form__logo" alt="Logo" enctype="multipart/form-data">
                 </div>
             </div>
             <div class="clock">

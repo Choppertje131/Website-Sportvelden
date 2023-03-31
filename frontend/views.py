@@ -6,9 +6,8 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission
-from .models import Settings_fieldnames, Settings_lightnames, Selecting_fields, LightButton
+from .models import Settings_fieldnames, Selecting_fields, LightButton, Logo
 field_names = Settings_fieldnames
-light_names = Settings_lightnames.objects.all()
 light_button = LightButton
 
 # line 15 to line 47 makes sure that you cant enter the website without having an account.
@@ -191,7 +190,8 @@ def veld4view(request):
     data = {
             'page': 'Veld4.html',
             'error': '',
-            'field': Settings_fieldnames.objects.last(),          
+            'field': Settings_fieldnames.objects.last(),   
+            'logo': Logo.objects.last(),       
         }
 
     return render(request, 'Index.html', data)
@@ -328,6 +328,7 @@ def homeview(request):
         'field_data': field_data,
         'enabled_fields': enabled_fields,
         'active_fields': active_fields,
+        'logo': Logo.objects.last(),
     }
     return render(request, 'Index.html', data)
 
@@ -378,6 +379,7 @@ def veld1view(request):
         'field_data': field_data,
         'enabled_fields': enabled_fields,
         'active_fields': active_fields,
+        'logo': Logo.objects.last(),
     }
     return render(request, 'Index.html', data)
 
@@ -428,6 +430,7 @@ def veld2view(request):
         'field_data': field_data,
         'enabled_fields': enabled_fields,
         'active_fields': active_fields,
+        'logo': Logo.objects.last(),
     }
     return render(request, 'Index.html', data)
 
@@ -478,6 +481,7 @@ def veld3view(request):
         'field_data': field_data,
         'enabled_fields': enabled_fields,
         'active_fields': active_fields,
+        'logo': Logo.objects.last(),
     }
     return render(request, 'Index.html', data)
 
@@ -493,6 +497,7 @@ def settingsview(request):
             'page': 'Settings.html',
             'error': '',
             'field': Settings_fieldnames.objects.last(),
+            'logo': Logo.objects.last(),
         }   
     return render(request, 'Index.html', data)
 
@@ -510,26 +515,12 @@ def settingssview(request):
                 setattr(table, field, Settings_fieldnames.objects.values(field).last()[field])
 
         table.save()
-    
-    if request.method == "POST" and "lights" in request.POST:
-        boxes = {'l1': 'Lamp1', 'l2': 'Lamp2', 'l3': 'Lamp3', 'l4': 'Lamp4'}
-        table = Settings_lightnames()
-
-        for box, lamp in boxes.items():
-            requested_box = request.POST.get(box)
-            if requested_box != "" and len(requested_box) > 1:
-                setattr(table, lamp, requested_box)
-            else:
-                setattr(table, lamp, Settings_lightnames.objects.values(lamp).last()[lamp])
-        table.field_id = request.POST.get('field_id')
-        
-        table.save()
-
-    
+      
     data = {
                 'page': 'Settingss.html',
                 'error': '',
                 'field': Settings_fieldnames.objects.last(),
+                'logo': Logo.objects.last(), 
             }   
     return render(request, 'Index.html', data)
 

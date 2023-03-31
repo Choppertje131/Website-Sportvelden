@@ -27,21 +27,6 @@ class Settings_fieldnames(models.Model):
     class Meta:
         verbose_name_plural = "Settings Field Names"
 
-class Settings_lightnames(models.Model):
-    Lamp1 = models.CharField(max_length=10)
-    Lamp2 = models.CharField(max_length=10)
-    Lamp3 = models.CharField(max_length=10)
-    Lamp4 = models.CharField(max_length=10)
-    Lamp5 = models.CharField(max_length=10)
-    Lamp6 = models.CharField(max_length=10)
-    field_id = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.field_id
-
-    class Meta:
-        verbose_name_plural = "Lights fields"
-
 class Selecting_fields(models.Model):
     field1_active = models.BooleanField(default = False)
     field2_active = models.BooleanField(default = False)
@@ -89,3 +74,9 @@ class LightButton(models.Model):
 
     def __str__(self):
         return f'LightButton {self.id}'
+
+class Logo(models.Model):
+    logo_image = models.ImageField(null = True, blank = True, upload_to = "IMG/")
+
+    def __str__(self):
+        return "Logo"
