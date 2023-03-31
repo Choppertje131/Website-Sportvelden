@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 path("login" ,views.loginview, name="login"),
@@ -12,4 +14,4 @@ path("settings", views.settingsview, name="settings"),
 path("veld3", views.veld3view, name="veld3"),
 path("veld4", views.veld4view, name="veld4"),
 path("settingss", views.settingssview, name="settingss"),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
