@@ -19,26 +19,17 @@
         <input autocomplete="off" type="text" name="Box2" placeholder= "{{ field.Veld2 }}" maxlength="9">
         <input autocomplete="off" type="text" name="Box3" placeholder= "{{ field.Veld3 }}" maxlength="9">
         <input autocomplete="off" type="text" name="Box4" placeholder= "{{ field.Veld4 }}" maxlength="9">
+        <h2>
+            Logo
+        </h2>
+        <label for="Logo"> <input type="file" id="Logo" name="Logo" placeholder="Logo"></label>
         <button type="submit" name="nav">Opslaan</button>
         {% csrf_token %}
     </form>
-    <!-- <form class="text-form" method="post" name="Lights">
+    <!-- <form class="logo" method="post" enctype="multipart/form-data" name="Photo">
         <h2>
-            Naam Lampen
+            Logo
         </h2>
-        <div class="field_id">
-            <select name="field_id">
-                <option value="VID-A">{{ field.Veld1 }}</option>
-                <option value="VID-B">{{ field.Veld2 }}</option>
-                <option value="VID-C">{{ field.Veld3 }}</option>
-                <option value="VID-D">{{ field.Veld4 }}</option>
-            </select>
-        </div>   
-        <input autocomplete="off" type="text" name="l1" placeholder="Linksboven" maxlength="12">
-        <input autocomplete="off" type="text" name="l2" placeholder="Midden" maxlength="12">
-        <input autocomplete="off" type="text" name="l3" placeholder="Rechtsboven" maxlength="12">
-        <input autocomplete="off" type="text" name="l4" placeholder="Linksonder" maxlength="12">
-        <button type="submit" name="lights">Opslaan</button>
         {% csrf_token %}
     </form> -->
 </body>

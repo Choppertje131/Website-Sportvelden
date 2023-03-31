@@ -1,5 +1,7 @@
 # all the imports to make the whole site work
 import time as delay
+import os
+from django.conf import settings
 from datetime import datetime, date, time
 from django.shortcuts import render, redirect
 from django.shortcuts import render, HttpResponse
@@ -10,7 +12,7 @@ from .models import Settings_fieldnames, Selecting_fields, LightButton, Logo
 field_names = Settings_fieldnames
 light_button = LightButton
 
-# line 15 to line 47 makes sure that you cant enter the website without having an account.
+# line 14 to line 46 makes sure that you cant enter the website without having an account.
 def loginview(request): 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -44,7 +46,7 @@ def logoutview(request):
     logout(request)
     return redirect("/login")
 
-# with line 49 to line 82, you can make your own account to view the site, however, you dont get permission to change anything.
+# with line 48 to line 81, you can make your own account to view the site, however, you dont get permission to change anything.
 def registerview(request):
     
     if request.method == 'POST':
@@ -80,66 +82,6 @@ def registerview(request):
 
     return render(request, 'Index.html', data )
 
-# line 98 to line 125 are to make sure that you are logged in before you can view the site, but also to display the changes that are made in the Settings page.
-def veld1view(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
-
-    reversed_list = list(reversed(list(light_names.values())))
-    for item in reversed_list:
-        if item["field_id"] == "VID-A":
-            lamp1 = item["Lamp1"]
-            lamp2 = item["Lamp2"]
-            lamp3 = item["Lamp3"]
-            lamp4 = item["Lamp4"]
-            lamp5 = item["Lamp5"]
-            lamp6 = item["Lamp6"]
-            break
-
-    data = {
-            'page': 'veld1.html',
-            'error': '',
-            'field': Settings_fieldnames.objects.last(),
-            'lamp1': lamp1,
-            'lamp2': lamp2,
-            'lamp3': lamp3,
-            'lamp4': lamp4,
-            'lamp5': lamp5,
-            'lamp6': lamp6,
-        }
-
-    return render(request, 'Index.html', data )
-
-# line 128 to line 155 are to make sure that you are logged in before you can view the site, but also to display the changes that are made in the Settings page.
-def veld2view(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
-
-    reversed_list = list(reversed(list(light_names.values())))
-    for item in reversed_list:
-        if item["field_id"] == "VID-B":
-            lamp1 = item["Lamp1"]
-            lamp2 = item["Lamp2"]
-            lamp3 = item["Lamp3"]
-            lamp4 = item["Lamp4"]
-            lamp5 = item["Lamp5"]
-            lamp6 = item["Lamp6"]
-            break
-
-    data = {
-            'page': 'veld2.html',
-            'error': '',
-            'field': Settings_fieldnames.objects.last(),
-            'lamp1': lamp1,
-            'lamp2': lamp2,
-            'lamp3': lamp3,
-            'lamp4': lamp4,
-            'lamp5': lamp5,
-            'lamp6': lamp6,
-        }
-
-    return render(request, 'Index.html', data )
-
 # line 158 to 167 makes sure that you are logged in before you can view the site
 def settingsview(request):
     if not request.user.is_authenticated:
@@ -151,36 +93,6 @@ def settingsview(request):
         }
 
     return render(request, 'Index.html', data )
-
-# line 170 to line 197 are to make sure that you are logged in before you can view the site, but also to display the changes that are made in the Settings page.
-def veld3view(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
-
-    reversed_list = list(reversed(list(light_names.values())))
-    for item in reversed_list:
-        if item["field_id"] == "VID-C":
-            lamp1 = item["Lamp1"]
-            lamp2 = item["Lamp2"]
-            lamp3 = item["Lamp3"]
-            lamp4 = item["Lamp4"]
-            lamp5 = item["Lamp5"]
-            lamp6 = item["Lamp6"]
-            break
-
-    data = {
-            'page': 'veld3.html',
-            'error': '',
-            'field': Settings_fieldnames.objects.last(),
-            'lamp1': lamp1,
-            'lamp2': lamp2,
-            'lamp3': lamp3,
-            'lamp4': lamp4,
-            'lamp5': lamp5,
-            'lamp6': lamp6,
-        }
-
-    return render(request, 'Index.html', data)
 
 # line 200 to line 228 are to make sure that you are logged in before you can view the site, but also to display the changes that are made in the Settings page.
 def veld4view(request):
@@ -514,14 +426,23 @@ def settingssview(request):
             else:
                 setattr(table, field, Settings_fieldnames.objects.values(field).last()[field])
 
+        # Handle the uploaded logo file
+        logo = request.FILES.get('Logo', None)
+        if logo is not None:
+            logo_path = os.path.join(settings.MEDIA_ROOT)
+            with open(logo_path, 'wb') as f:
+                f.write(logo.read())
+            logo_instance = Logo(logo_image='IMG/')
+            logo_instance.save()
+
         table.save()
-      
+
     data = {
-                'page': 'Settingss.html',
-                'error': '',
-                'field': Settings_fieldnames.objects.last(),
-                'logo': Logo.objects.last(), 
-            }   
+        'page': 'Settingss.html',
+        'error': '',
+        'field': Settings_fieldnames.objects.last(),
+        'logo': Logo.objects.last(), 
+    }
     return render(request, 'Index.html', data)
 
 # Naam lampen veranderen

@@ -34,14 +34,40 @@ Versie          Programeur          Omschrijving          Datum           Status
         flex-direction: column;
     }
 
+    /* .logo{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    } */
+
     .text-form input{
         height: 30px;
         width: 50vh;
         border: 2px solid grey;
         margin-bottom: 20px;
     }
+    
+    /* .logo input{
+        margin-top: 5px;    
+        width: auto;
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
 
-    .text-form button{
+    .logo label{
+        margin-left: 65px;
+    } */
+
+    /* .border {
+        height: 30px;
+        width: 50vh;
+        border: 2px solid grey;
+        margin-bottom: 20px;
+    } */
+
+    .text-form button,
+    .logo button{
         height: 40px;
         width: 30vh;
         margin: auto;
