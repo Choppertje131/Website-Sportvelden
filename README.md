@@ -12,3 +12,6 @@ info@strago.nl
 Strago Electro
 Avelingen Oost 8
 4202 MN Gorinchem
+
+Ontworpen door Twan van Zuijdam
+06-36297975

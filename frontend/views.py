@@ -413,7 +413,7 @@ def settingsview(request):
         }   
     return render(request, 'Index.html', data)
 
-# line 500 to 534 changes the name in the nav-bar. It also changes the name of the lights displayed on a certain kind of page
+# line 500 to 534 changes the name in the nav-bar. It also changes the name of the lights displayed on a certain kind of page.
 def settingssview(request):
     if request.method == "POST" and "nav" in request.POST:
         boxes = {'Box1': 'Veld1', 'Box2': 'Veld2', 'Box3': 'Veld3', 'Box4': 'Veld4'}
@@ -426,7 +426,6 @@ def settingssview(request):
             else:
                 setattr(table, field, Settings_fieldnames.objects.values(field).last()[field])
 
-        # Handle the uploaded logo file
         logo = request.FILES.get('Logo', None)
         if logo is not None:
             logo_path = os.path.join(settings.MEDIA_ROOT)
